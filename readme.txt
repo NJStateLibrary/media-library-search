@@ -13,7 +13,7 @@ Search media library items by assigned post or page
 == Description ==
 
 By default in Wordpress admin media library users not has ability to search media items by attached page or post.
-With current plugin user go it now! Just enter assigned page title and click search!
+Now you have it! Just enter assigned page title and click search!
 
 == Installation ==
 
