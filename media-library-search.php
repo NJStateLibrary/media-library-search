@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Media Search
  * Description: Search media by attached page
- * Version: 1.0
+ * Version: 1.1
  * Author: Valera Satsura
  * Author URI: http://satsura.com
  */
