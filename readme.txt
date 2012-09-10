@@ -28,3 +28,5 @@ Now you have it! Just enter assigned page title and click search!
 * Added readme
 = 1.2 =
 * Replace hardcoded table names in sql query to $wpdb->{table_name}
+= 1.3 =
+* New Feature. Added search by attached page in Media Library lightbox while creating posts. (http://wordpress.org/support/topic/media-search?replies=2)
