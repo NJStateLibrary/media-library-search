@@ -16,7 +16,7 @@ function media_by_page_search( $request ) {
     global $pagenow, $wpdb;
 
     // That search works only on "Media Library"
-    if ( is_admin() && 'upload.php' == $pagenow && isset( $_GET['s'] ) && !empty( $_GET['s'] ) ) {
+    if ( is_admin() && ( 'upload.php' == $pagenow || 'media-upload.php' == $pagenow ) && isset( $_GET['s'] ) && !empty( $_GET['s'] ) ) {
         // Get page limits
         $media_per_page = (int) get_user_option( 'upload_per_page' );
         if ( empty( $media_per_page ) || $media_per_page < 1 )
@@ -33,11 +33,11 @@ function media_by_page_search( $request ) {
         $request = 'SELECT SQL_CALC_FOUND_ROWS  '.$wpdb->posts.'.*
                       FROM '.$wpdb->posts.'  WHERE 1=1  AND (
                         (
-                          ('.$wpdb->posts.'.post_title LIKE "%' . mysql_escape_string($_GET['s']) . '%") OR
-                          ('.$wpdb->posts.'.post_content LIKE "%' . mysql_escape_string($_GET['s']) . '%")) OR
+                          ('.$wpdb->posts.'.post_title LIKE "%' . mysql_escape_string( $_GET['s'] ) . '%") OR
+                          ('.$wpdb->posts.'.post_content LIKE "%' . mysql_escape_string( $_GET['s'] ) . '%")) OR
                           (
                             '.$wpdb->posts.'.post_parent IN (
-                              select ID from '.$wpdb->posts.' as b where b.`post_type` <> "attachment" and b.`post_title` like "%' . mysql_escape_string($_GET['s']) . '%"
+                              select ID from ' . $wpdb->posts . ' as b where b.`post_type` <> "attachment" and b.`post_title` like "%' . mysql_escape_string( $_GET['s'] ) . '%"
                             )
                           )
                         )  AND '.$wpdb->posts.'.post_type = "attachment" AND ('.$wpdb->posts.'.post_status = "inherit" OR '.$wpdb->posts.'.post_status = "private")
